@@ -270,19 +270,20 @@ class EnhancedResEmoteNet(nn.Module):
         # -------------------------
         # 4️⃣ Classifier Head
         # -------------------------
-        self.classifier = nn.Sequential(
-            nn.Linear(2048, 1024),
-            nn.BatchNorm1d(1024),
-            nn.ReLU(inplace=True),
-            nn.Dropout(0.5),
+        # self.classifier = nn.Sequential(
+        #     nn.Linear(2048, 1024),
+        #     nn.BatchNorm1d(1024),
+        #     nn.ReLU(inplace=True),
+        #     nn.Dropout(0.5),
 
-            nn.Linear(1024, 512),
-            nn.BatchNorm1d(512),
-            nn.ReLU(inplace=True),
-            nn.Dropout(0.3),
+        #     nn.Linear(1024, 512),
+        #     nn.BatchNorm1d(512),
+        #     nn.ReLU(inplace=True),
+        #     nn.Dropout(0.3),
 
-            nn.Linear(512, num_classes)
-        )
+        #     nn.Linear(512, num_classes)
+        # )
+        self.classifier = nn.Linear(2048, num_classes)
 
         # -------------------------
         # 5️⃣ Freeze early layers
